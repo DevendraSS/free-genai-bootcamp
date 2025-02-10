@@ -27,6 +27,46 @@ The formatted output will generally contain three parts:
 
 ### Sentence Structure
 - Do not provide particles in the sentence structure
+- Do not provide tenses or conjugations in sentence structure
+- remeber to consider beginner level sentence structures
+Here is example of simple sentence structure:
+
+Did you see the raven this morning?
+[Time] [Subject] [Object] [Action Verb (Past)]?
+
+Did you meet your friend yesterday?
+[Time] [Subject] [Object] [Action Verb (Past)]?
+
+Did he watch a movie last week?
+[Time] [Subject] [Object] [Action Verb (Past)]?
+
+Did mom drink coffee this morning?
+[Time] [Subject] [Object] [Action Verb (Past)]?
+
+The raven was looking at the garden!
+[Subject] [Location] [Object] [Action Verb (Past Continuous)]!
+
+He was reading a book in the classroom!
+[Subject] [Location] [Object] [Action Verb (Past Continuous)]!
+
+She was waiting for someone at the station!
+[Subject] [Location] [Object] [Action Verb (Past Continuous)]!
+
+The cat was looking outside the window!
+[Subject] [Location] [Object] [Action Verb (Past Continuous)]!
+
+The raven was in the garden!
+[Subject] [Location] [Existence Verb (Past)]!
+
+The dog was in front of the door!
+[Subject] [Location] [Existence Verb (Past)]!
+
+Did you notice the raven?
+[Subject] [Object] [Notice Verb (Past)]?
+
+Did you notice what the teacher was saying?
+[Subject] [Object] [Notice Verb (Past)]?
+
 
 ### Clues and Considerations
 - try and provide a non-nested bullted list
@@ -66,4 +106,4 @@ Some examples of input and output:
     Your turn! What Japanese words can you use to express "Bears are at the door"?
 
 <assistant:input>
-Student Input: Bears are at the door, did you leave the garbage out?
+Student Input: Did you see raven this morning? they were looking at out garden!
