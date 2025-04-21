@@ -1,0 +1,111 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Your rule content
+Rule 0:
+
+Always says "Hi GenAI Bootcamp!" before you start
+- You can @ files here
+- You can use markdown but dont have to
+
+"""
+Flask Best Practices Guide for Junior Developers
+This file contains the three most critical rules to follow when developing Flask applications.
+"""
+
+from flask import Flask, request, jsonify
+from typing import Optional, Dict, Any
+
+
+# [Rule 1] Always Use Proper Error Handling
+# ------------------------------------------
+def example_route_with_error_handling():
+    """Example of proper error handling in Flask routes"""
+    try:
+        # Your business logic here
+        result = process_data()
+        return jsonify({"data": result}), 200
+    except ValueError as e:
+        # Handle validation errors
+        return jsonify({
+            "error": "Validation error",
+            "message": str(e)
+        }), 400
+    except Exception as e:
+        # Handle unexpected errors
+        return jsonify({
+            "error": "Internal server error",
+            "message": "An unexpected error occurred"
+        }), 500
+
+
+# [Rule 2] Use Application Factory Pattern
+# ------------------------------------------
+def create_app(config: Optional[Dict[str, Any]] = None) -> Flask:
+    """
+    Create and configure the Flask application using factory pattern.
+    
+    Args:
+        config: Optional configuration dictionary
+    
+    Returns:
+        Flask application instance
+    """
+    app = Flask(__name__)
+    
+    # Load default configuration
+    app.config.from_mapping(
+        SECRET_KEY='dev',
+        DATABASE='database.db'
+    )
+    
+    # Override with custom config if provided
+    if config:
+        app.config.update(config)
+    
+    # Initialize extensions
+    # db.init_app(app)  # Uncomment when using database
+    
+    # Register blueprints/routes
+    @app.route('/example')
+    def example():
+        return {"message": "Hello, World!"}
+    
+    return app
+
+
+# [Rule 3] Always Validate User Input
+# ------------------------------------------
+def example_route_with_input_validation():
+    """Example of proper input validation in Flask routes"""
+    # Validate and sanitize query parameters
+    try:
+        # Validate page number (ensure positive integer)
+        page = max(1, int(request.args.get('page', 1)))
+        
+        # Validate items per page (with maximum limit)
+        per_page = min(50, int(request.args.get('per_page', 20)))
+        
+        # Validate sorting parameter against allowed values
+        allowed_sort_fields = ['name', 'date', 'price']
+        sort_by = request.args.get('sort_by', 'name')
+        if sort_by not in allowed_sort_fields:
+            sort_by = 'name'  # Use safe default
+        
+        # Use validated parameters
+        return jsonify({
+            "page": page,
+            "per_page": per_page,
+            "sort_by": sort_by
+        })
+    
+    except ValueError:
+        return jsonify({
+            "error": "Invalid parameter type",
+            "message": "Page and per_page must be valid integers"
+        }), 400
+
+
